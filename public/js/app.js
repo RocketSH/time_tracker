@@ -11,6 +11,22 @@ class TimersDashboard extends React.Component {
   }
 }
 
+class ToggleableTimerForm extends React.Component {
+  render() {
+    if (this.props.isOpen) {
+      return <TimerForm />;
+    } else {
+      return (
+        <div className="ui basic content center aligned segment">
+          <button className="ui basic button icon">
+            <i className="plus icon" />
+          </button>
+        </div>
+      );
+    }
+  }
+}
+
 class EditableTimerList extends React.Component {
   render() {
     return (
@@ -18,14 +34,14 @@ class EditableTimerList extends React.Component {
         <EditableTimer
           title="Learn React"
           project="Web Domination"
-          elaspsed="8986300"
+          elapsed="8986300"
           runningSince={null}
           editFormOpen={false}
         />
         <EditableTimer
-          title="Learn extrem ironing"
+          title="Learn extreme ironing"
           project="World Domination"
-          elaspsed="3890985"
+          elapsed="3890985"
           runningSince={null}
           editFormOpen={true}
         />
@@ -45,50 +61,9 @@ class EditableTimer extends React.Component {
         <Timer
           title={this.props.title}
           project={this.props.project}
-          elaspsed={this.props.elaspsed}
+          elapsed={this.props.elapsed}
           runningSince={this.props.runningSince}
         />
-      );
-    }
-  }
-}
-class TimerForm extends React.Component {
-  render() {
-    const submitText = this.props.title ? "Update" : "Create";
-    return (
-      <div className="ui centered card">
-        <div className="content">
-          <form className="ui form">
-            <div className="field">
-              <label>Title</label>
-              <input type="text" defaultValue={this.props.title} />
-            </div>
-            <div className="field">
-              <label>Project</label>
-              <input type="text" defaultValue={this.props.project} />
-            </div>
-            <div className="ui two bottom attached buttons">
-              <button className="u basic blue button">{submitText}</button>
-              <button className="ui basic red button">Cancel</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    );
-  }
-}
-
-class ToggleableTimerForm extends React.Component {
-  render() {
-    if (this.props.isOpen) {
-      return <TimerForm />;
-    } else {
-      return (
-        <div className="ui basic content center aligned segment">
-          <button className="ui basic button icon">
-            <i className="plus icon" />
-          </button>
-        </div>
       );
     }
   }
@@ -96,7 +71,7 @@ class ToggleableTimerForm extends React.Component {
 
 class Timer extends React.Component {
   render() {
-    const elaspsedString = helper.renderElapsedString(this.props.elaspsed);
+    const elapsedString = helpers.renderElapsedString(this.props.elapsed);
     return (
       <div className="ui centered card">
         <div className="content">
@@ -115,6 +90,32 @@ class Timer extends React.Component {
           </div>
         </div>
         <div className="ui bottom attached blue basic button">Start</div>
+      </div>
+    );
+  }
+}
+
+class TimerForm extends React.Component {
+  render() {
+    const submitText = this.props.title ? "Update" : "Create";
+    return (
+      <div className="ui centered card">
+        <div className="content">
+          <div className="ui form">
+            <div className="field">
+              <label>Title</label>
+              <input type="text" defaultValue={this.props.title} />
+            </div>
+            <div className="field">
+              <label>Project</label>
+              <input type="text" defaultValue={this.props.project} />
+            </div>
+            <div className="ui two bottom attached buttons">
+              <button className="ui basic blue button">{submitText}</button>
+              <button className="ui basic red button">Cancel</button>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
