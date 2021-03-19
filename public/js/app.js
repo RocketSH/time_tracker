@@ -128,6 +128,12 @@ class TimerForm extends React.Component {
     title: this.props.title || "",
     project: this.props.props || "",
   };
+  handleTitleChange = (e) => {
+    this.setState({ title: e.target.value });
+  };
+  handleProjectChange = (e) => {
+    this.setState({ project: e.target.value });
+  };
   render() {
     const submitText = this.props.title ? "Update" : "Create";
     return (
@@ -136,11 +142,19 @@ class TimerForm extends React.Component {
           <div className="ui form">
             <div className="field">
               <label>Title</label>
-              <input type="text" value={this.state.title} />
+              <input
+                type="text"
+                value={this.state.title}
+                onChange={this.handleTitleChange}
+              />
             </div>
             <div className="field">
               <label>Project</label>
-              <input type="text" value={this.state.project} />
+              <input
+                type="text"
+                value={this.state.project}
+                onChange={this.handleProjectChange}
+              />
             </div>
             <div className="ui two bottom attached buttons">
               <button className="ui basic blue button">{submitText}</button>
