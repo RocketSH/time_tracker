@@ -1,16 +1,12 @@
-### Running the app
+# Time_trakcer
 
-1. Ensure you have `npm` installed.
+A simple JS self-learning repo.
 
-Follow the instructions for your platform [here](https://github.com/npm/npm).
+### Usage
 
-2. Install all dependencies:
+1. `npm` install
 
-````
-npm install
-````
-
-3. Boot the HTTP server
+2. Boot the HTTP server
 
 ````
 npm run server
